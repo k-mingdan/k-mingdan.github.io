@@ -131,7 +131,7 @@
                 for (let i = 0; i < data.length; i++) {
                     let links = "";
                     for (let t = 0; t < data[i]["links"].length; t++) {
-                        links += "<a href='" + data[i]["links"][t] + "' >[" + t + "]</a>,"
+                        links += "<a href='" + data[i]["links"][t] + "' target='_blank'>[" + t + "]</a>,"
                     }
                     str += `<div><div class="inside"><span class="left">` + data[i]["name"] + `</span><span class="right">` + data[i]["tag"] + `</span><span class="center">` + links + `</span></div></div>`
                 }
