@@ -1,0 +1,144 @@
+<html>
+<style>
+    body {
+        background-color: white;
+        font-family: "Roboto", sans-serif;
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .table {
+        margin-left: 10%;
+        margin-right: 10%;
+        margin-top: 20px;
+        width: 80%;
+    }
+    
+    .top {
+        background-color: grey;
+        /*Color*/
+        border-radius: 15px 15px 0px 0px;
+        height: 50px;
+        border-bottom: 1px solid #95a5a6;
+        /*Color*/
+        color: #ecf0f1;
+        /*Color*/
+        font-weight: bold;
+    }
+    
+    .inside {
+        background-color: #ecf0f1;
+        /*Color*/
+        height: 50px;
+        border-bottom: 0.25px solid #d6d9da;
+        /*Color*/
+    }
+    
+    .bottom {
+        background-color: grey;
+        /*Color*/
+        border-radius: 0px 0px 15px 15px;
+        height: 50px;
+        color: #ecf0f1;
+        /*Color*/
+        font-weight: bold;
+    }
+    
+    .left {
+        width: 32%;
+        padding-top: 15px;
+        display: inline-block;
+        text-align: center;
+    }
+    
+    .center {
+        width: 32%;
+        padding-top: 15px;
+        display: inline-block;
+        /* float: center; */
+        text-align: center;
+    }
+    
+    .right {
+        width: 32%;
+        padding-top: 15px;
+        display: inline-block;
+        text-align: center;
+    }
+    
+    .input {
+        text-align: center;
+        margin-left: 20%;
+        margin-right: 20%;
+        width: 60%;
+        height: 50px;
+        border-radius: 15px;
+        border: 1px solid grey;
+    }
+    
+    .input:hover {
+        border: 2px solid grey;
+    }
+</style>
+<script src="lib/jquery.min.js"></script>
+
+<body>
+    </br>
+    <input type="text" id="myInput" class="input" onkeyup="myFunction()" placeholder="查查汉奸" title="Type in a name">
+    <div class='table'>
+        <div class="top">
+            <div class="left">名字/组织</div>
+            <div class="center">倾向</div>
+            <div class="right">相关链接</div>
+        </div>
+        <div id="myTable">
+        </div>
+        <script type="text/javascript">
+            function getdata() {
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        renderList(JSON.parse(xhttp.responseText)["data"])
+                    }
+                };
+                xhttp.open("GET", "data/datalist.json", true);
+                xhttp.send();
+            }
+
+            function myFunction() {
+                var input, filter, table, div;
+                input = document.getElementById("myInput");
+                filter = input.value.toUpperCase();
+                table = document.getElementById("myTable");
+                div = table.getElementsByClassName("inside");
+                for (let i = 0; i < div.length; i++) {
+                    let span = div[i].getElementsByTagName("span");
+                    for (let t = 0; t < span.length; t++) {
+                        let txtValue = span[t].textContent || span[t].innerText;
+                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                            div[i].style.display = "";
+                            break;
+                        } else {
+                            div[i].style.display = "none";
+                        }
+                    }
+                }
+            }
+
+            function renderList(data) {
+                let str = "";
+                for (let i = 0; i < data.length; i++) {
+                    let links = "";
+                    for (let t = 0; t < data[i]["links"].length; t++) {
+                        links += "<a href='" + data[i]["links"][t] + "' >[" + t + "]</a>,"
+                    }
+                    str += `<div><div class="inside"><span class="left">` + data[i]["name"] + `</span><span class="right">` + data[i]["tag"] + `</span><span class="center">` + links + `</span></div></div>`
+                }
+                document.getElementById("myTable").innerHTML = str;
+            }
+            getdata()
+        </script>
+</body>
+
+</html>
