@@ -1,0 +1,23 @@
+{
+    "name": "黎智英",
+    "children": [
+        { "name": "佐丹奴" },
+        { "name": "香港苹果日报" },
+        { "name": "壹传媒" }
+    ],
+    "relate": [
+        { "name": "李韵琴" },
+        { "name": "Christian Whiton", "link": "https://news.sina.com.cn/o/2019-08-18/doc-ihytcitn0092413.shtml" },
+        { "name": "Mark Simon", "link": "https://news.sina.com.cn/o/2019-08-18/doc-ihytcitn0092413.shtml" },
+        { "name": "陳方安生", "link": "https://www.cna.com.tw/news/firstnews/201908190077.aspx" },
+        { "name": "李柱銘", "link": "https://www.cna.com.tw/news/firstnews/201908190077.aspx" },
+        { "name": "何俊仁", "link": "https://www.cna.com.tw/news/firstnews/201908190077.aspx" },
+        { "name": "李韵琴", "link": "" },
+        { "name": "李韵琴", "link": "" },
+        { "name": "李韵琴", "link": "" },
+        { "name": "李韵琴", "link": "" },
+        { "name": "李韵琴", "link": "" },
+        { "name": "李韵琴", "link": "" },
+        { "name": "李韵琴", "link": "" }
+    ]
+}
